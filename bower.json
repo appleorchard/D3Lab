@@ -1,0 +1,16 @@
+{
+  "name": "D3Lab",
+  "authors": [
+    "dalcong2life <dalcong2life@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "d3": "~3.5.15",
+    "bootstrap": "~3.3.6",
+    "underscore": "~1.8.3"
+  }
+}
