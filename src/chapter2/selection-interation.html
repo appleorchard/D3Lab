@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../libs/d3/d3.js"></script>
+
+    <style>
+        .red {
+            background-color: red;
+        }
+
+        .box {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<div></div>
+<div></div>
+<div></div>
+
+<script>
+
+    d3.selectAll("div")
+            .attr("class", "box red")
+            .each(function (d, i) {
+                d3.select(this).append('span').text(i);
+            })
+</script>
+</body>
+</html>

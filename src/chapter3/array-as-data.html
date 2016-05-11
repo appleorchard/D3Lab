@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../libs/d3/d3.js"></script>
+    <style>
+
+        div {
+            margin: auto;
+            display: inline-block;
+        }
+
+        .h-bar {
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body>
+
+
+<script>
+
+    var data = [10, 15, 30, 50, 80, 65, 55, 30, 20, 10, 8];
+
+    function render(data) {
+        // Enter
+        d3.select("body").selectAll("div.h-bar")
+                .data(data)
+                .enter()
+                .append("div")
+                .attr("class", "h-bar")
+                .append("span");
+
+        // Update
+        d3.select("body").selectAll("div.h-bar")
+                .data(data)
+                .attr("width", function (d) {
+                    return d * 3;
+                })
+                .select("span")
+                .text(function (d) {
+                    return d;
+                });
+
+        // Exit
+        d3.select("body").selectAll("div.h-bar")
+                .data(data)
+                .exit()
+                .remove();
+
+    }
+
+
+    setInterval(function () {
+        data.shift();
+        data.push(Math.round(Math.random() * 100));
+
+        render(data);
+    }, 1500);
+
+    render(data);
+
+
+</script>
+</body>
+</html>
