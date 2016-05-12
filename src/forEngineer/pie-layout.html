@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../libs/d3/d3.js"></script>
+</head>
+<body>
+<div id="chart"></div>
+
+
+<script>
+    var data = [
+        {"sales": 30, "name": "label 0", "type": 1},
+        {"sales": 8, "name": "label 1", "type": 2},
+        {"sales": 68, "name": "label 2", "type": 1},
+        {"sales": 52, "name": "label 3", "type": 2},
+        {"sales": 43, "name": "label 4", "type": 2}
+
+
+    ];
+
+    var pie = d3.layout.pie()
+            .value(function (d) {
+                return d.sales;
+            })
+            .sort(function (a, b) {
+                return b - a;
+            })
+            .startAngle(-Math.PI / 2)
+            .endAngle(Math.PI / 2);
+
+    console.log(pie(data));
+
+    var svg = d3.select("#chart").append("svg")
+            .attr("width", 500)
+            .attr("height", 500);
+
+    var group = svg.append("g")
+            .attr("transform", "translate(" + [250, 250] + ")");
+
+    var color = d3.scale.category10();
+
+    var arc = d3.svg.arc()
+            .innerRadius(0)
+            .outerRadius(250);
+
+    group.selectAll("path")
+            .data(pie(data))
+            .enter()
+            .append("path")
+            .attr("d", arc)
+            .attr("fill", function (d, i) {
+                return color(i);
+            })
+
+
+</script>
+
+</body>
+</html>
